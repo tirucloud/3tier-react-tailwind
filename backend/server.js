@@ -1,12 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const { Pool } = require('pg');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware to parse JSON
+// Middleware to parse JSON and enable CORS
 app.use(express.json());
+app.use(cors());
 
 const pool = new Pool({
     user: process.env.DB_USER,
