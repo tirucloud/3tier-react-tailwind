@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import About from "./components/About";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 
@@ -10,7 +9,6 @@ function App() {
     <div className="bg-gray-100 text-gray-900">
       <Navbar />
       <HeroSection />
-      <About />
       <Registration />
       <Footer />
     </div>
