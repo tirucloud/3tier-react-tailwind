@@ -1,0 +1,22 @@
+# Use a smaller base image
+FROM node:18-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install only production dependencies first
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
+
+# Copy only necessary files (excluding dev files, tests, etc.)
+COPY . .
+
+# Use a non-root user for better security
+RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
+
+# Expose your app's port
+EXPOSE 5000
+
+# Run the app
+CMD ["node", "server.js"]
